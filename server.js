@@ -59,7 +59,10 @@ var BuyOrders = mongoose.model('BuyOrders', buyOrderSchema);
 
 
 var aUniqueCompanySchemaName = mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        unique: true
+    },
     symbolURL: String,
     openPrice: String,
     currentPrice: {
