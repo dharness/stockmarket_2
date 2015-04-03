@@ -8,12 +8,18 @@ var port = process.env.PORT || 80
 var bodyParser = require('body-parser')
 var http = require('http')
 var mongoose = require('mongoose');
+var proplock = require('proplock');
 
 mongoose.connect('mongodb://morgan:morgan@ds059821.mongolab.com:59821/stockmarket', function(err, db) {
     if (err) throw err;
     console.log("Connected to Database");
     _db = db //this is our global database object
 })
+
+// LOCK THE DATABASE ======================================
+
+proplock.lock(mongoose);
+
 
 // DATBASE CRUMS ======================================
 
